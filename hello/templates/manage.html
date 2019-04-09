@@ -1,0 +1,16 @@
+{% load staticfiles %}
+
+{% block content %}
+<li>{{ message }}</li>
+<h2>Cache Data For Area</h2>
+
+<form method="POST">
+<select name="area_selection">
+
+{% for area in areas %}
+        <option value="{{ area }}">{{ area.name }}</option>
+{% endfor %}
+</select>
+</form>
+
+{% endblock %}
