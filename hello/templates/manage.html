@@ -4,7 +4,7 @@
 <li>{{ message }}</li>
 <h2>Cache Data For Area</h2>
 
-<form method="POST">
+<form method="POST">{% csrf_token %}
 <select name="area_selection" onclick="this.form.submit">
 
 {% for area in areas %}
