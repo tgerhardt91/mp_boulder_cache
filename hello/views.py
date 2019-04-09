@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import Greeting
-from .models import AreaLatLon
+from .models import AreaCoordinates
 
 
 # Create your views here.
@@ -18,6 +18,6 @@ def db(request):
 
     greetings = Greeting.objects.all()
 
-    areas = AreaLatLon.objects.all()
+    areas = AreaCoordinates.objects.all()
 
     return render(request, "db.html", {"greetings": greetings, "areas": areas})
