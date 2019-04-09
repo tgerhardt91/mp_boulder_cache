@@ -5,12 +5,13 @@
 <h2>Cache Data For Area</h2>
 
 <form method="POST">
-<select name="area_selection">
+<select name="area_selection" onclick="this.form.submit">
 
 {% for area in areas %}
         <option value="{{ area }}">{{ area.name }}</option>
 {% endfor %}
 </select>
+<input type="submit" name="Cache Selection" value="Cache Selection">
 </form>
 
 {% endblock %}
