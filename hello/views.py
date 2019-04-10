@@ -28,8 +28,9 @@ def manage(request):
     message = 'No selection made'
 
     if request.method == 'POST':
-        area_selection = request.POST['area_selection']
-        message = area_selection.name + ' selected'
+        area_selection_id = request.POST['area_selection']
+        selected = AreaCoordinate.objects.get(id=int(area_selection_id))
+        message = selected.name + ' selected'
 
     areas = AreaCoordinate.objects.all()
 

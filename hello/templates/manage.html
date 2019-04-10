@@ -8,7 +8,7 @@
 <select name="area_selection" onclick="this.form.submit">
 
 {% for area in areas %}
-        <option value={{ area }}>{{ area.name }}</option>
+        <option value={{ area.id }}>{{ area.name }}</option>
 {% endfor %}
 </select>
 <input type="submit" name="Cache Selection" value="Cache Selection">
