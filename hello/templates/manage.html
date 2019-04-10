@@ -5,7 +5,7 @@
 <h2>Cache Data For Area</h2>
 
 <form method="POST">{% csrf_token %}
-<select name="area_selection" onclick="this.form.submit">
+<select name="area_selection">
 
 {% for area in areas %}
         <option value={{ area.id }}>{{ area.name }}</option>

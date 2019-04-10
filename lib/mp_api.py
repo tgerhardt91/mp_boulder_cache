@@ -1,16 +1,37 @@
 import requests
-import json
+from .payloads import get_problem_payload
 
 
-def get_routes_for_lat_lon(lat, lon):
-    base_url = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?'
-    params = {'key': api_key(), 'lat': lat, 'lon': lon, 'minDiff': 'V0',
-              'maxDiff': 'V15', 'maxDistance': 50, 'maxResults': 200}
+MaxDistance = 50
+MaxResults = 500
+BaseUrl = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?'
 
-    request = requests.get(base_url, params)
+
+def get_boulders_at_coordinates(lat, lon):
+    params = build_params(api_key(), lat, lon)
+    request = requests.get(BaseUrl, params)
 
     data = request.json()
+    return get_problem_payload(data)
+
+
+def get_routes_at_coordinates(lat, lon):
+    params = build_params(api_key(), lat, lon, for_boulders=False)
+    request = requests.get(BaseUrl, params)
+
+    data = request.json()
+    return get_problem_payload(data)
 
 
 def api_key():
     return ''
+
+
+def build_params(key, lat, lon, for_boulders=True):
+    min_diff = 'V0' if for_boulders else '5.6'
+    max_diff = 'V15' if for_boulders else '5.15'
+
+    return {'key': key, 'lat': lat, 'lon': lon, 'minDiff': min_diff,
+            'maxDiff': max_diff, 'maxDistance': MaxDistance, 'maxResults': MaxResults}
+
+
