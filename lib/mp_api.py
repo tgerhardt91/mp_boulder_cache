@@ -12,8 +12,6 @@ BaseUrl = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?'
 def get_boulders_at_coordinates(lat, lon):
     params = build_params(api_key(), lat, lon)
 
-    log_call(BaseUrl + str(params))
-
     request = requests.get(BaseUrl, params)
     data = request.json()
     return get_problem_payload(data)
@@ -21,8 +19,6 @@ def get_boulders_at_coordinates(lat, lon):
 
 def get_routes_at_coordinates(lat, lon):
     params = build_params(api_key(), lat, lon, for_boulders=False)
-
-    log_call(BaseUrl + str(params))
 
     request = requests.get(BaseUrl, params)
     data = request.json()
@@ -40,8 +36,5 @@ def build_params(key, lat, lon, for_boulders=True):
     return {'key': key, 'lat': lat, 'lon': lon, 'minDiff': min_diff,
             'maxDiff': max_diff, 'maxDistance': MaxDistance, 'maxResults': MaxResults}
 
-
-def log_call(url):
-    sys.stdout('requesting data from: ' + url)
 
 
