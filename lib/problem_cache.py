@@ -19,4 +19,5 @@ def cache_problems_at_coordinates(lat, lon, area_id):
                                                        lat=problem.lat, lon=problem.lon, name=problem.name,
                                                        area_id=area_id))
 
-    processor.save_problems(problem_models)
+    for problem in problem_models:
+        processor.save_problem(problem)
