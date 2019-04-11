@@ -50,7 +50,7 @@ class ProblemProcessor(object):
                 break
             try:
                 with transaction.atomic():
-                    Problem.object.bulk_create(batch, batch_size)
+                    Problem.objects.bulk_create(batch, batch_size)
             except IntegrityError:
                 transaction.rollback()
                 raise
