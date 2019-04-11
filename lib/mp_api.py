@@ -11,20 +11,20 @@ BaseUrl = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?'
 
 def get_boulders_at_coordinates(lat, lon):
     params = build_params(api_key(), lat, lon)
-    request = requests.get(BaseUrl, params)
 
     log_call(BaseUrl + params)
 
+    request = requests.get(BaseUrl, params)
     data = request.json()
     return get_problem_payload(data)
 
 
 def get_routes_at_coordinates(lat, lon):
     params = build_params(api_key(), lat, lon, for_boulders=False)
+
+    log_call(BaseUrl + params)
+
     request = requests.get(BaseUrl, params)
-
-    log_call(BaseUrl+params)
-
     data = request.json()
     return get_problem_payload(data)
 

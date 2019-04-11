@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from lib import problem_cache
 import sys
+import traceback
 
 from .models import Greeting
 from .models import AreaCoordinate
@@ -40,6 +41,7 @@ def managecache(request):
         except Exception as e:
             message = 'caching data for ' + selected.name + ' failed, see error logs for details'
             sys.stderr.write('Error thrown while attempting to cache mp problem data, message: ' + str(e))
+            sys.stderr.write(traceback.format_exc())
 
     areas = AreaCoordinate.objects.all()
 
