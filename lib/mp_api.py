@@ -1,5 +1,7 @@
 import requests
 from .payloads import get_problem_payload
+from gettingstarted import settings
+import sys
 
 
 MaxDistance = 50
@@ -11,6 +13,8 @@ def get_boulders_at_coordinates(lat, lon):
     params = build_params(api_key(), lat, lon)
     request = requests.get(BaseUrl, params)
 
+    log_call(BaseUrl + params)
+
     data = request.json()
     return get_problem_payload(data)
 
@@ -19,12 +23,14 @@ def get_routes_at_coordinates(lat, lon):
     params = build_params(api_key(), lat, lon, for_boulders=False)
     request = requests.get(BaseUrl, params)
 
+    log_call(BaseUrl+params)
+
     data = request.json()
     return get_problem_payload(data)
 
 
 def api_key():
-    return ''
+    return settings.MP_API_KEY
 
 
 def build_params(key, lat, lon, for_boulders=True):
@@ -33,5 +39,9 @@ def build_params(key, lat, lon, for_boulders=True):
 
     return {'key': key, 'lat': lat, 'lon': lon, 'minDiff': min_diff,
             'maxDiff': max_diff, 'maxDistance': MaxDistance, 'maxResults': MaxResults}
+
+
+def log_call(url):
+    sys.stdout('requesting data from: ' + url)
 
 

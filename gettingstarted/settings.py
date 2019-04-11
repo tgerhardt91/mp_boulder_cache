@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MP_API_KEY = os.environ.get('MP_API_KEY')
 
 # Application definition
 
