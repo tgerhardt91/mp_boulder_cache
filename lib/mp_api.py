@@ -4,7 +4,7 @@ from gettingstarted import settings
 import sys
 
 
-MaxDistance = 50
+MaxDistance = 10
 MaxResults = 500
 BaseUrl = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?'
 
