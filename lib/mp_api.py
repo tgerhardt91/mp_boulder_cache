@@ -1,7 +1,6 @@
 import requests
 from .payloads import get_problem_payload
 from gettingstarted import settings
-import sys
 
 
 MaxDistance = 10

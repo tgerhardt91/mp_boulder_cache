@@ -6,16 +6,30 @@ import traceback
 
 from .models import Greeting
 from .models import AreaCoordinate
+from .models import Problem
+from .models import ProblemProcessor
+from .tables import ProblemTable
 
 
 # Create your views here.
 def index(request):
-    # return HttpResponse('Hello from Python!')
-    return render(request, "index.html")
+    areas = AreaCoordinate.objects.all()
+
+    try:
+        if request.method == 'POST':
+            area_selection_id = request.POST['area_selection']
+            problems = ProblemProcessor.get_by_area_id(area_selection_id)
+        else:
+            problems = Problem.objects.all()
+    except:
+        sys.stderr.write(traceback.format_exc())
+
+    problem_table = ProblemTable(problems)
+
+    return render(request, "index.html", {"areas": areas}, {"problem_table": problem_table})
 
 
 def db(request):
-
     greeting = Greeting()
     greeting.save()
 
@@ -27,7 +41,6 @@ def db(request):
 
 
 def managecache(request):
-
     message = 'No selection made'
 
     if request.method == 'POST':

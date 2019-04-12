@@ -4,3 +4,4 @@ django-heroku
 requests
 boto3
 boto
+django_tables2
