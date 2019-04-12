@@ -1,5 +1,6 @@
 
 from django.shortcuts import render
+from django_tables2 import RequestConfig
 from lib import problem_cache
 import sys
 import traceback
@@ -24,7 +25,8 @@ def index(request):
     except:
         sys.stderr.write(traceback.format_exc())
 
-    problem_table = ProblemTable(problems)
+    problem_table = ProblemTable(Problem.objects.all())
+    RequestConfig(request).configure(problem_table)
 
     return render(request, "index.html", {"areas": areas}, {"problem_table": problem_table})
 
