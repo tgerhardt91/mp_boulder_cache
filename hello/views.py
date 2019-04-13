@@ -25,7 +25,7 @@ def index(request):
     except:
         sys.stderr.write(traceback.format_exc())
 
-    problem_table = ProblemTable(Problem.objects.all())
+    problem_table = ProblemTable(problems)
     RequestConfig(request).configure(problem_table)
 
     return render(request, "index.html", {"areas": areas}, {"problem_table": problem_table})

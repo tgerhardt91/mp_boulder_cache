@@ -4,4 +4,4 @@ django-heroku
 requests
 boto3
 boto
-django_tables2
+django_tables2==2.0.6
