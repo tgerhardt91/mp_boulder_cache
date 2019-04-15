@@ -4,17 +4,19 @@
 {% block content %}
 <li>{{ message }}</li>
 <h2>Cache Data For Area</h2>
+<body>
+        <form method="POST">{% csrf_token %}
+        <select name="area_selection">
 
-<form method="POST">{% csrf_token %}
-<select name="area_selection">
+        {% for area in areas %}
+                <option value={{ area.id }}>{{ area.name }}</option>
+        {% endfor %}
+        </select>
+        <input type="submit" name="Cache Selection" value="Cache Selection">
+        </form>
 
-{% for area in areas %}
-        <option value={{ area.id }}>{{ area.name }}</option>
-{% endfor %}
-</select>
-<input type="submit" name="Cache Selection" value="Cache Selection">
-</form>
+        {% render_table table %}
 
-{% render_table table %}
+</body>
 
 {% endblock %}
