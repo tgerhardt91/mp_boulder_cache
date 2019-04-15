@@ -6,3 +6,4 @@ boto3
 boto
 django_tables2==2.0.6
 django-filter
+django-bootstrap3
