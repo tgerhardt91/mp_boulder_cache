@@ -20,9 +20,9 @@
                 </form>
         </div>
         <div>
-                {% if problem_filter %}
+                {% if filter %}
                 <form action="" method="get" class="form form-inline">
-                {% bootstrap_form problem_filter.form layout='inline' %}
+                {% bootstrap_form filter.form layout='inline' %}
                 {% bootstrap_button 'filter' %}
                 </form>
                 {% endif %}
