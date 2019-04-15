@@ -2,6 +2,8 @@
 {% load render_table from django_tables2 %}
 
 {% block content %}
+<html>
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 <li>{{ message }}</li>
 <h2>Cache Data For Area</h2>
 <body>
@@ -18,5 +20,6 @@
         {% render_table table %}
 
 </body>
+</html>
 
 {% endblock %}
