@@ -62,7 +62,7 @@ def managecache(request):
     areas = AreaCoordinate.objects.all()
     problems = Problem.objects.all()
 
-    table = ProblemTable()
+    table = ProblemTable(problems)
     problem_filter = ProblemFilter(request.GET, queryset=problems)
 
     RequestConfig(request).configure(table)
