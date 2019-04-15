@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load bootstrap3 %}
 {% load render_table from django_tables2 %}
 
 {% block content %}
@@ -7,17 +8,27 @@
 <li>{{ message }}</li>
 <h2>Cache Data For Area</h2>
 <body>
-        <form method="POST">{% csrf_token %}
-        <select name="area_selection">
+        <div>
+                <form method="POST">{% csrf_token %}
+                        <select name="area_selection">
 
-        {% for area in areas %}
-                <option value={{ area.id }}>{{ area.name }}</option>
-        {% endfor %}
-        </select>
-        <input type="submit" name="Cache Selection" value="Cache Selection">
-        </form>
+                        {% for area in areas %}
+                                <option value={{ area.id }}>{{ area.name }}</option>
+                        {% endfor %}
+                        </select>
+                        <input type="submit" name="Cache Selection" value="Cache Selection">
+                </form>
+        </div>
+        <div>
+                {% if problem_filter %}
+                <form action="" method="get" class="form form-inline">
+                {% bootstrap_form problem_filter.form layout='inline' %}
+                {% bootstrap_button 'filter' %}
+                </form>
+                {% endif %}
 
-        {% render_table table %}
+                {% render_table table %}
+        </div>
 
 </body>
 </html>

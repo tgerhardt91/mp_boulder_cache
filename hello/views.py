@@ -10,6 +10,7 @@ from .models import AreaCoordinate
 from .models import Problem
 from .models import ProblemProcessor
 from .tables import ProblemTable
+from .filters import ProblemFilter
 
 
 # Create your views here.
@@ -59,11 +60,15 @@ def managecache(request):
             sys.stderr.write(traceback.format_exc())
 
     areas = AreaCoordinate.objects.all()
+    problems = Problem.objects.all()
 
-    table = ProblemTable(Problem.objects.all())
+    table = ProblemTable()
+    problem_filter = ProblemFilter(request.GET, queryset=problems)
+
     RequestConfig(request).configure(table)
 
-    return render(request, 'managecache.html', {'message': message, 'areas': areas, 'table': table})
+    return render(request, 'managecache.html', {'message': message, 'areas': areas,
+                                                'table': table, 'filter': problem_filter})
 
 
 
