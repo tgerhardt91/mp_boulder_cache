@@ -60,7 +60,10 @@ def managecache(request):
 
     areas = AreaCoordinate.objects.all()
 
-    return render(request, 'managecache.html', {'message': message, 'areas': areas})
+    table = ProblemTable(Problem.objects.all())
+    RequestConfig(request).configure(table)
+
+    return render(request, 'managecache.html', {'message': message, 'areas': areas, 'table': table})
 
 
 
