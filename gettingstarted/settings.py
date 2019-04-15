@@ -74,6 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "gettingstarted.wsgi.application"
 
+DJANGO_TABLES2_TEMPLATE = 'django_tables2/bootstrap.html'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
