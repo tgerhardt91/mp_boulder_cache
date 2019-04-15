@@ -7,4 +7,4 @@ class ProblemTable(tables.Table):
     class Meta:
         model = Problem
         template_name = 'django_tables2/bootstrap.html'
-        fields = ('location', 'name')
+        fields = ('name', 'location')
