@@ -6,5 +6,6 @@ class ProblemFilter(django_filters.FilterSet):
     class Meta:
         model = Problem
         fields = {
-            'name': ['icontains']
+            'name': ['icontains'],
+            'location': ['in']
         }
