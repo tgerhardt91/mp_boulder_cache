@@ -58,9 +58,10 @@ class ProblemProcessor(object):
                 raise
 
     @staticmethod
-    def create_problem(mp_id, boulder, location, lat, lon, name, area_id):
+    def create_problem(mp_id, boulder, location, lat, lon, name, area_id, mp_url, grade):
         return Problem(mp_id=mp_id, boulder=boulder,
-                       location=location, lat=lat, lon=lon, name=name, area_id=area_id)
+                       location=location, lat=lat, lon=lon, name=name,
+                       area_id=area_id, mp_url=mp_url, grade=grade)
 
     @staticmethod
     def delete_problems_by_area_id(area_id_filter):
