@@ -8,3 +8,5 @@ class ProblemTable(tables.Table):
         model = Problem
         template_name = 'django_tables2/bootstrap.html'
         fields = ('name', 'grade', 'location', 'mp_url')
+
+    map = tables.TemplateColumn(template_name='hello/templates/map_modal.html')
