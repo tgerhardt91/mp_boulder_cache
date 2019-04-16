@@ -24,7 +24,7 @@ class Problem(models.Model):
     name = models.TextField(verbose_name='Problem/Route Name')
     area_id = models.IntegerField(null=False)
     mp_url = models.URLField(verbose_name='Mountain Project Url')
-    grade = models.CharField(max_length=30, verbose_name='Grade')
+    grade = models.CharField(max_length=30, verbose_name='Grade', default='None')
 
 
 class ProblemProcessor(object):
