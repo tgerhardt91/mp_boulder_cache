@@ -23,7 +23,7 @@ class Problem(models.Model):
     lon = models.CharField(max_length=20)
     name = models.TextField(verbose_name='Problem/Route Name')
     area_id = models.IntegerField(null=False)
-    mp_url = models.URLField(verbose_name='Mountain Project Url')
+    mp_url = models.URLField(verbose_name='Mountain Project Url', default='None')
     grade = models.CharField(max_length=30, verbose_name='Grade', default='None')
 
 
