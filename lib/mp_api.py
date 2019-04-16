@@ -3,7 +3,7 @@ from .payloads import get_problem_payload
 from gettingstarted import settings
 
 
-MaxDistance = 10
+MaxDistance = 15
 MaxResults = 500
 BaseUrl = 'https://www.mountainproject.com/data/get-routes-for-lat-lon?'
 

@@ -16,13 +16,15 @@ class AreaCoordinate(models.Model):
 
 
 class Problem(models.Model):
-    mp_id = models.IntegerField()
+    mp_id = models.IntegerField(primary_key=True)
     boulder = models.BooleanField(default=True)
-    location = ArrayField(models.CharField(max_length=200), blank=True, verbose_name='Location Of Climb')
+    location = ArrayField(models.CharField(max_length=500), blank=True, verbose_name='Location Of Climb')
     lat = models.CharField(max_length=20)
     lon = models.CharField(max_length=20)
-    name = models.CharField(max_length=200, verbose_name='Problem/Route Name')
+    name = models.TextField(verbose_name='Problem/Route Name')
     area_id = models.IntegerField(null=False)
+    mp_url = models.URLField(verbose_name='Mountain Project Url')
+    grade = models.CharField(max_length=30, verbose_name='Grade')
 
 
 class ProblemProcessor(object):
