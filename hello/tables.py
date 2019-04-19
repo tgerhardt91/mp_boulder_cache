@@ -9,4 +9,4 @@ class ProblemTable(tables.Table):
         template_name = 'django_tables2/bootstrap.html'
         fields = ('name', 'grade', 'location', 'mp_url')
 
-    map = tables.TemplateColumn(template_name='map_modal.html')
+    map = tables.TemplateColumn('<a href="{{record.gmap_url}}">map link</a>')

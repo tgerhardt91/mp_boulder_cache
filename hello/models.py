@@ -25,6 +25,7 @@ class Problem(models.Model):
     area_id = models.IntegerField(null=False)
     mp_url = models.URLField(verbose_name='Mountain Project Url', default='None')
     grade = models.CharField(max_length=30, verbose_name='Grade', default='None')
+    gmap_url = models.URLField(verbose_name='Google Maps Url', default='None')
 
 
 class ProblemProcessor(object):
@@ -57,12 +58,16 @@ class ProblemProcessor(object):
                 transaction.rollback()
                 raise
 
-    @staticmethod
-    def create_problem(mp_id, boulder, location, lat, lon, name, area_id, mp_url, grade):
+    def create_problem(self, mp_id, boulder, location, lat, lon, name, area_id, mp_url, grade):
         return Problem(mp_id=mp_id, boulder=boulder,
                        location=location, lat=lat, lon=lon, name=name,
-                       area_id=area_id, mp_url=mp_url, grade=grade)
+                       area_id=area_id, mp_url=mp_url, grade=grade,
+                       gmap_url=self.build_googlemaps_url(lat, lon))
 
     @staticmethod
     def delete_problems_by_area_id(area_id_filter):
         Problem.objects.filter(area_id=area_id_filter).delete()
+
+    @staticmethod
+    def build_googlemaps_url(lat, lon):
+        return 'http://maps.google.com/maps?q=' + lat + ',' + lon
