@@ -3,7 +3,7 @@ from lib import mp_api
 
 
 def cache_problems_at_coordinates(lat, lon, area_id):
-    processor = models.ProblemProcessor
+    processor = models.ProblemProcessor()
 
     problem_models = []
 
