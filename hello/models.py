@@ -70,4 +70,4 @@ class ProblemProcessor(object):
 
     @staticmethod
     def build_googlemaps_url(lat, lon):
-        return 'http://maps.google.com/maps?q=' + lat + ',' + lon
+        return 'http://maps.google.com/maps?q=' + str(lat) + ',' + str(lon)
