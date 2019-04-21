@@ -15,21 +15,14 @@ from .filters import ProblemFilter
 
 # Create your views here.
 def index(request):
-    areas = AreaCoordinate.objects.all()
+    problems = Problem.objects.all()
+    problem_filter = ProblemFilter(request.GET, queryset=problems)
 
-    try:
-        if request.method == 'POST':
-            area_selection_id = request.POST['area_selection']
-            problems = ProblemProcessor.get_by_area_id(area_selection_id)
-        else:
-            problems = Problem.objects.all()
-    except:
-        sys.stderr.write(traceback.format_exc())
+    table = ProblemTable(problem_filter.qs)
 
-    table = ProblemTable(problems)
     RequestConfig(request).configure(table)
 
-    return render(request, "index.html", {"areas": areas}, {"table": table})
+    return render(request, "index.html", {"filter": problem_filter}, {"table": table})
 
 
 def db(request):

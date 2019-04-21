@@ -1,19 +1,20 @@
 {% load staticfiles %}
+{% load bootstrap3 %}
 {% load render_table from django_tables2 %}
 
 {% block content %}
 <html>
-  <h2>Home Page Stub</h2>
   <body>
-    <form method="POST">{% csrf_token %}
-    <select name="area_selection">
+    <div class="table-responsive">
+        {% if filter %}
+        <form action="" method="get" class="form form-inline">
+        {% bootstrap_form filter.form layout='inline' %}
+        {% bootstrap_button 'filter' %}
+        </form>
+        {% endif %}
 
-    {% for area in areas %}
-            <option value={{ area.id }}>{{ area.name }}</option>
-    {% endfor %}
-    </select>
-    <input type="submit" name="Cache Selection" value="Cache Selection">
-    </form>
+        {% render_table table %}
+    </div>
   </body>
 </html>
 
