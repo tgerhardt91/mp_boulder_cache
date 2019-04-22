@@ -15,14 +15,7 @@ from .filters import ProblemFilter
 
 # Create your views here.
 def index(request):
-    problems = Problem.objects.all()
-    problem_filter = ProblemFilter(request.GET, queryset=problems)
-
-    table = ProblemTable(problem_filter.qs)
-
-    RequestConfig(request).configure(table)
-
-    return render(request, "index.html", {"filter": problem_filter}, {"table": table})
+    return render(request, "index.html")
 
 
 def db(request):
