@@ -4,11 +4,6 @@ from django.db import models, transaction, IntegrityError
 from itertools import islice
 
 
-# Create your models here.
-class Greeting(models.Model):
-    when = models.DateTimeField("date created", auto_now_add=True)
-
-
 class AreaCoordinate(models.Model):
     lat = models.CharField(max_length=20)
     lon = models.CharField(max_length=20)

@@ -5,7 +5,6 @@ from lib import problem_cache
 import sys
 import traceback
 
-from .models import Greeting
 from .models import AreaCoordinate
 from .models import Problem
 from .models import ProblemProcessor
@@ -16,17 +15,6 @@ from .filters import ProblemFilter
 # Create your views here.
 def index(request):
     return render(request, "index.html")
-
-
-def db(request):
-    greeting = Greeting()
-    greeting.save()
-
-    greetings = Greeting.objects.all()
-
-    areas = AreaCoordinate.objects.all()
-
-    return render(request, "db.html", {"greetings": greetings, "areas": areas})
 
 
 def managecache(request):
